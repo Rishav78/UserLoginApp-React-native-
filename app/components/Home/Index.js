@@ -6,14 +6,21 @@ export default class Login extends Component{
 		userName: '',
 		userPassword: ''
 	}
+
 	checkCredentials = ()=>{
-		if(this.state.userName == 'Rishav' && this.state.userPassword=='Hacker_12'){
-			this.props.navigation.navigate('dashBoard')
-		}else{
-			Alert.alert('Error','Something went Wrong',[{
-				text: 'Okey'
-			}])
-		}
+		fetch('http://localhost:3000',{ method: 'POST', body: `{"userName": "${this.state.userName}", "userPassword": "${this.state.userPassword}"}`})
+		.then(res=>{
+			return res.text()
+		})
+		.then(res=>{
+			if(res == '1'){
+				this.props.navigation.navigate('dashBoard')
+			}else{
+				Alert.alert('Error','Something went Wrong',[{
+					text: 'Okey'
+				}])
+			}
+		})
 	}
 	render(){
 		return(
