@@ -12,11 +12,22 @@ import {Platform, StyleSheet, Text, View, Dimensions, Button} from 'react-native
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import dashBoard from './app/components/dashBoard/Index';
 import Login from './app/components/Home/Index';
+import navigator from './app/components/Navigation/navigation';
 
 
 var x = createStackNavigator({
-  Home: Login,
-  dashBoard
+	Home: {
+		screen:Login,
+	},
+	navigator: {
+		screen: navigator,
+	}
+},
+{
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  }
 })
 
 

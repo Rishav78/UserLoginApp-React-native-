@@ -2,28 +2,17 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, Button, Dimensions} from 'react-native';
 import { createDrawerNavigator, createAppContainer } from 'react-navigation';
 import DashBoard from '../dashBoard/Index';
-import Settings from '../Settings/Index';
-
+import Setting from '../Settings/Index';
+import SideBar from '../Common/CustomSidebar'
 const width = Dimensions.get('window').width
 
 const DrawerConfig = {
-  drawerWidth: width*0.8
+  drawerWidth: width*0.8,
+  contentComponent: SideBar
 }
 
-var AppStack = createAppContainer(createDrawerNavigator({
+export default createAppContainer(createDrawerNavigator({
   dashBoard: {screen: DashBoard},
-  setting: {screen: Settings}
+  Setting: {screen: Setting}
 
 }, DrawerConfig))
-
-
-export default class Navigate extends Component{
-	render(){
-		return(
-			<View>
-			<Text>Rishav</Text>
-			 	<AppStack />
-			</View>
-		)
-	}
-}
