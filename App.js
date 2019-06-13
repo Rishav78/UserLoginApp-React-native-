@@ -13,9 +13,12 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import dashBoard from './app/components/dashBoard/Index';
 import Login from './app/components/Home/Index';
 import navigator from './app/components/Navigation/navigation';
-
+import LoginSignin from './app/components/LoginSignin/Index'
 
 var x = createStackNavigator({
+	LoginSignin: {
+		screen: LoginSignin
+	},
 	Home: {
 		screen:Login,
 	},

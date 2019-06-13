@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import background from '../../Files/background.jpg';
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Header from './Header'
 import {Platform,
  		StyleSheet, 
  		Text, 
@@ -39,18 +40,28 @@ export default class Login extends Component{
 	render(){
 		return(
 			<ImageBackground source={background} style={styles.container}>
-				<Text style={styles.text}>Login Form</Text>
-				<View style={styles.inputContainer}>
-					<Icon name={'user'} size={23} color={'#333'} style={styles.icon} />
-					<TextInput style={styles.input} onChangeText={userName => this.setState({userName})} placeholder="Enter your username" />
+				<View style={styles.form}>
+					<Text style={styles.text}>Sign In</Text>
+
+					<View style={styles.inputContainer}>
+						<Icon name={'user'} size={23} color={'#333'} style={styles.icon} />
+						<TextInput style={styles.input} onChangeText={userName => this.setState({userName})} placeholder="Enter your username" />
+					</View>
+
+					<View style={styles.inputContainer}>
+						<Icon name={'lock'} size={23} color={'#333'} style={styles.icon} />
+						<TextInput style={styles.input} secureTextEntry={true} onChangeText={userPassword => this.setState({userPassword})} placeholder="password" />
+					</View>
+
+					<TouchableOpacity style={styles.login} onPress={this.checkCredentials}>
+						<Text style={styles.loginText}>Login</Text>
+					</TouchableOpacity>
+
+					<Text>{this.state.userName}</Text>
+
+					<Text>{this.state.userPassword}</Text>
+
 				</View>
-				<View style={styles.inputContainer}>
-					<Icon name={'lock'} size={23} color={'#333'} style={styles.icon} />
-					<TextInput style={styles.input} secureTextEntry={true} onChangeText={userPassword => this.setState({userPassword})} placeholder="password" />
-				</View>
-				<TouchableOpacity style={styles.login} onPress={this.checkCredentials}><Text style={styles.loginText}>Login</Text></TouchableOpacity>
-				<Text>{this.state.userName}</Text>
-				<Text>{this.state.userPassword}</Text>
 			 </ImageBackground>
 		)
 	}
@@ -59,15 +70,20 @@ export default class Login extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 10,
-		justifyContent: 'center',
-		alignItems: 'center',
 		width: null,
-		height: null
+		height: null,
+	},
+	form:{
+		flex:1,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	text: {
-		fontSize: 25,
-		alignItems: 'center'
+		fontSize: 40,
+		alignItems: 'center',
+		color: '#333',
+		marginBottom: 30,
+		fontWeight: 'bold'
 	},
 	input: {
 		borderRadius: 30,
