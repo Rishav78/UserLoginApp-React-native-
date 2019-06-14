@@ -33,7 +33,7 @@ export default class Login extends Component{
             <Text style={{textAlign: 'center',fontWeight: 'bold'}}>Login</Text>
           </TouchableOpacity>
 
-           <TouchableOpacity style={styles.signup}>
+           <TouchableOpacity style={styles.signup} onPress={()=>this.props.navigation.navigate('Signup')}>
             <Text style={{textAlign: 'center'}}>Sign up</Text>
           </TouchableOpacity>
 
